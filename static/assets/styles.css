@@ -164,20 +164,3 @@
   border-width: 0px;
   cursor: pointer;
 }
-
-.CONTINUE {
-  width: 102px;
-  height: 20px;
-  text-shadow: 1px 1px 0 #000000;
-  font-size: 18px;
-  font-weight: bold;
-  font-stretch: normal;
-  font-style: normal;
-  line-height: normal;
-  letter-spacing: normal;
-  text-align: center;
-  border-radius: 2px;
-  color: #ffffff;
-}
-
-

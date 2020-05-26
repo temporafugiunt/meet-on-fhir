@@ -30,21 +30,21 @@
             $("#language-selector").on("change", () => { 
               setLanguage($('#language-selector').val());
             });   
-            if(!client.encounter || !client.encounter.id) { 
+            if (!client.encounter || !client.encounter.id) { 
               showError('#error-no-encounter');
             } else {
               var userResourceType;
 
               // Older FHIR server that doesn't support id_token and therefore the fhirUser property.
-              if(!client.user || !client.user.resourceType) {
-                if(client.state.tokenResponse.fallback_user) {
+              if (!client.user || !client.user.resourceType) {
+                if (client.state.tokenResponse.fallback_user) {
                   userResourceType = client.state.tokenResponse.fallback_user.split('/')[0].toLowerCase()
                 }
               } else {
                 userResourceType = client.user.resourceType.toLowerCase();
               }
 
-              if(userResourceType) {
+              if (userResourceType) {
                 // Patient needs to see the consent screen, provider bypasses it.
                 if (userResourceType === 'patient') {
                   $("#consent-ack").on("click", () => { 

@@ -29,6 +29,6 @@ var languageAssets = {
 
 function getAssetsForLanguage(languageId) {
   var languageAsset = languageAssets[languageId];
-  if(typeof languageAsset === 'undefined') { return languageAssets['en'] }
+  if (typeof languageAsset === 'undefined') { return languageAssets['en'] }
   return languageAsset;
 }

@@ -30,21 +30,21 @@
             $("#language-selector").on("change", () => { 
               setLanguage($('#language-selector').val());
             });   
-            if(!isAvailable(client.encounter) || !isAvailable(client.encounter.id)) { 
+            if(!client.encounter || !client.encounter.id) { 
               showError('#error-no-encounter');
             } else {
               var userResourceType;
 
               // Older FHIR server that doesn't support id_token and therefore the fhirUser property.
-              if(!isAvailable(client.user) || !isAvailable(client.user.resourceType)) {
-                if(isAvailable(client.state.tokenResponse.fallback_user)) {
+              if(!client.user || !client.user.resourceType) {
+                if(client.state.tokenResponse.fallback_user) {
                   userResourceType = client.state.tokenResponse.fallback_user.split('/')[0].toLowerCase()
                 }
               } else {
                 userResourceType = client.user.resourceType.toLowerCase();
               }
 
-              if(isAvailable(userResourceType)) {
+              if(userResourceType) {
                 // Patient needs to see the consent screen, provider bypasses it.
                 if (userResourceType === 'patient') {
                   $("#consent-ack").on("click", () => { 
@@ -66,16 +66,6 @@
             showError('#error-smart-failed');
           });
       });
-
-      function isAvailable(propOrObj) {
-        if(typeof propOrObj === 'undefined') {
-          return false;
-        }
-        if(propOrObj === null) {
-          return false;
-        }
-        return true;
-      }
 
       function waitFor(encounterId) {
         var timerId = window.setInterval(function() {

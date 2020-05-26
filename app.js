@@ -42,7 +42,7 @@ function error(response) {
 }
 
 function debugLog(message) {
-	if(settings.debugLogging) {
+	if (settings.debugLogging) {
 		console.log(message);
 	}
 }
